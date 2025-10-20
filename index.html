@@ -33,18 +33,19 @@ body {
 
 /* OGNI EVENTO */
 .event {
-  padding: 1rem 2rem;
   position: relative;
   width: 50%;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  box-sizing: border-box;
 }
 
-/* POSIZIONE ALTERNATA DEGLI EVENTI */
+/* Alternanza desktop */
 .event:nth-child(odd) {
   left: 0;
   text-align: right;
+  align-items: flex-end;
 }
 
 .event:nth-child(even) {
@@ -57,22 +58,23 @@ body {
 .event::before {
   content: '';
   position: absolute;
+  top: 15px;
   width: 20px;
   height: 20px;
   background: #ff0000;
   border-radius: 50%;
-  top: 15px;
   border: 3px solid #f9f9f9;
   z-index: 1;
 }
 
-/* ALLINEAMENTO PUNTI */
+/* Punto a destra per eventi dispari */
 .event:nth-child(odd)::before {
-  left: 81.5%;
+  right: -12.2px; /* vicino alla linea */
 }
 
+/* Punto a sinistra per eventi pari */
 .event:nth-child(even)::before {
-  left: -12px;
+  left: -12.2px; /* vicino alla linea */
 }
 
 /* DATE SOPRA PUNTO */
@@ -87,18 +89,15 @@ body {
   margin: 0;
   color: #333;
   font-size: 0.95rem;
-  text-align: left;
 }
 
-.event p:nth-child(even){
-    width: 300px;
-}
-
-/* RESPONSIVE PER SCHERMI PICCOLI */
+/* RESPONSIVE: mobile */
 @media screen and (max-width: 600px) {
   .event {
-    width: 100%;
+    width: 100% !important;
+    left: 0 !important;
     text-align: left !important;
+    align-items: flex-start !important;
     padding-left: 2rem;
     padding-right: 2rem;
     margin-bottom: 2rem;
@@ -106,6 +105,7 @@ body {
 
   .event::before {
     left: 50%;
+    right: auto;
     transform: translateX(-50%);
   }
 }
