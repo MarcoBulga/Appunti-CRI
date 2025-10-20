@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeline Verticale</title>
+<style>
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f9f9f9;
+  padding: 2rem;
+}
+
+/* CONTAINER DELLA TIMELINE */
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* LINEA VERTICALE CENTRALE */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: #ff0000;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* OGNI EVENTO */
+.event {
+  padding: 1rem 2rem;
+  position: relative;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* POSIZIONE ALTERNATA DEGLI EVENTI */
+.event:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.event:nth-child(even) {
+  left: 50%;
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* PUNTO DELLA LINEA */
+.event::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff0000;
+  border-radius: 50%;
+  top: 15px;
+  border: 3px solid #f9f9f9;
+  z-index: 1;
+}
+
+/* ALLINEAMENTO PUNTI */
+.event:nth-child(odd)::before {
+  left: 81.5%;
+}
+
+.event:nth-child(even)::before {
+  left: -12px;
+}
+
+/* DATE SOPRA PUNTO */
+.event h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+/* DESCRIZIONE SOTTO PUNTO */
+.event p {
+  margin: 0;
+  color: #333;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.event p:nth-child(even){
+    width: 300px;
+}
+
+/* RESPONSIVE PER SCHERMI PICCOLI */
+@media screen and (max-width: 600px) {
+  .event {
+    width: 100%;
+    text-align: left !important;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .event::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+</style>
+</head>
+<body>
+<div class="timeline">
+  <div class="event">
+    <h3>8 maggio 1828</h3>
+    <p>Nasce Jean Henry Dunant</p>
+  </div>
+  <div class="event">
+    <h3>1859</h3>
+    <p>Dunant arriva a Solferino</p>
+  </div>
+  <div class="event">
+    <h3>1862</h3>
+    <p>Dunant pubblica <i>Souvenir de Solferino</i></p>
+  </div>
+  <div class="event">
+    <h3>1863</h3>
+    <p>Nasce il Comitato dei Cinque e di conseguenza la CR</p>
+  </div>
+  <div class="event">
+    <h3>15 giugno 1864</h3>
+    <p>Nasce la CRI</p>
+  </div>
+  <div class="event">
+    <h3>22 agosto 1864</h3>
+    <p>Prima Convenzione di Ginevra</p>
+  </div>
+  <div class="event">
+    <h3>1870/1871</h3>
+    <p>Istituzione dell&apos;Agenzia Centrale delle Ricerche del CICR</p>
+  </div>
+  <div class="event">
+    <h3>1876</h3>
+    <p>Viene adottato l&apos;emblema della mezzaluna rossa su fondo bianco</p>
+  </div>
+  <div class="event">
+    <h3>1910</h3>
+    <p>Muore Jean Henry Dunant</p>
+  </div>
+  <div class="event">
+    <h3>1914</h3>
+    <p>Inizio Prima Guerra Mondiale</p>
+  </div>
+  <div class="event">
+    <h3>1918</h3>
+    <p>Fine Prima Guerra Mondiale</p>
+  </div>
+  <div class="event">
+    <h3>1919</h3>
+    <p>Nasce la Federazione Internazionale delle società di Croce Rossa</p>
+  </div>
+  <div class="event">
+    <h3>1923</h3>
+    <p>Viene adottato l&apos;emblema del leone e sole rossi su fondo bianco</p>
+  </div>
+  <div class="event">
+    <h3>12 agosto 1949</h3>
+    <p>Convenzioni di Ginevra</p>
+  </div>
+  <div class="event">
+    <h3>1965</h3>
+    <p>A Vienna vengono proclamati i <b>7 principi fondamentali</b> di Croce Rossa</p>
+  </div>
+  <div class="event">
+    <h3>1980</h3>
+    <p>Cade in disuso l&apos;emblema del leone e sole rossi su fondo bianco</p>
+  </div>
+  <div class="event">
+    <h3>2005</h3>
+    <p>Viene aggiunto un emblema privo di riferimenti religiosi o culturali accettabile da tutte le Nazioni</p>
+  </div>
+</div>
+</body>
+</html>
