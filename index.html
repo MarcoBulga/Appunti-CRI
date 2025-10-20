@@ -97,17 +97,17 @@ body {
     width: 100% !important;
     left: 0 !important;
     text-align: left !important;
-    align-items: flex-start !important;
     padding-left: 2rem;
     padding-right: 2rem;
     margin-bottom: 2rem;
     max-width: 500px;
   }
 
+  /* Qui forziamo TUTTI i punti al centro */
   .event::before {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+    left: 50% !important;       /* centro della linea */
+    transform: translateX(-50%) !important;
+    right: auto !important;      /* cancella eventuali valori desktop */
   }
 }
 </style>
@@ -185,3 +185,4 @@ body {
 </div>
 </body>
 </html>
+
