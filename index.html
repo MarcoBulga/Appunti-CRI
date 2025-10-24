@@ -5,21 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Timeline Verticale</title>
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Segoe UI", sans-serif;
   background: #f9f9f9;
   padding: 2rem;
   margin: 0;
+  overflow-x: hidden; /* evita lo spazio bianco */
 }
 
 /* CONTAINER DELLA TIMELINE */
 .timeline {
   position: relative;
-  max-width: 400px;
   width: 100%;
+  max-width: 700px;
   margin: 0 auto;
   padding: 2rem 0;
-  overflow-x: hidden;
+  overflow-x: hidden; /* importantissimo per mobile */
 }
 
 /* LINEA VERTICALE CENTRALE */
@@ -41,7 +46,6 @@ body {
   padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
 /* Alternanza desktop */
@@ -72,62 +76,68 @@ body {
 
 /* Punto a destra per eventi dispari */
 .event:nth-child(odd)::before {
-  right: -12.2px; /* vicino alla linea */
+  right: -12px;
 }
 
 /* Punto a sinistra per eventi pari */
 .event:nth-child(even)::before {
-  left: -12.2px; /* vicino alla linea */
+  left: -12px;
 }
 
-/* DATE SOPRA PUNTO */
+/* Testo */
 .event h3 {
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
   color: #000;
 }
 
-/* DESCRIZIONE SOTTO PUNTO */
 .event p {
   margin: 0;
   color: #333;
   font-size: 0.95rem;
 }
 
-/* RESPONSIVE: mobile */
-@media screen and (max-width: 400px) {
-  html, body{
+/* --- VERSIONE MOBILE --- */
+@media screen and (max-width: 768px) {
+
+  html, body {
     max-width: 100%;
     overflow-x: hidden;
     padding: 0;
+    margin: 0;
   }
 
-  .timeline{
-    padding: 1rem 0;
-  }
-
+  /* Forza layout a colonna unica */
   .event {
-    width: 100%;
+    width: 100% !important;
     left: 0 !important;
     text-align: left !important;
     align-items: flex-start !important;
-    padding: 1rem 2rem;
+    padding-left: 3rem;
+    padding-right: 1rem;
   }
 
-  .timeline::after{
-    left: 20px;
-    transform: none;
+  /* Sposta la linea rossa a sinistra */
+  .timeline::after {
+    left: 20px !important;
+    transform: none !important;
   }
 
+  /* Sposta i punti in linea con la colonna */
   .event::before {
     left: 20px !important;
     transform: none !important;
     right: auto !important;
   }
 
-  .event h3, .event p {
+  /* Font più leggibili */
+  .event h3 {
+    font-size: 1.2rem;
+  }
+
+  .event p {
     font-size: 1rem;
-    text-align: left;
+    max-width: none;
   }
 }
 
@@ -262,6 +272,7 @@ body {
 </div>
 </body>
 </html>
+
 
 
 
