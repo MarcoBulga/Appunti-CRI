@@ -5,15 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Timeline Verticale</title>
 <style>
-html, body{
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 body {
   font-family: "Segoe UI", sans-serif;
   background: #f9f9f9;
   padding: 2rem;
+  margin: 0;
 }
 
 /* CONTAINER DELLA TIMELINE */
@@ -23,6 +19,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 2rem 0;
+  overflow-x: hidden;
 }
 
 /* LINEA VERTICALE CENTRALE */
@@ -98,9 +95,11 @@ body {
 }
 
 /* RESPONSIVE: mobile */
-@media screen and (max-width: 600px) {
-  body{
-    padding: 1rem;
+@media screen and (max-width: 768px) {
+  html, body{
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
   }
 
   .timeline{
@@ -108,28 +107,27 @@ body {
   }
 
   .event {
-    width: 100% !important;
+    width: 100%;
     left: 0 !important;
     text-align: left !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 1rem;
-    max-width: 500px;
+    align-items: flex-start !important;
+    padding: 1rem 2rem;
   }
 
-  /* Qui forziamo TUTTI i punti al centro */
+  .timeline::after{
+    left: 20px;
+    transform: none;
+  }
+
   .event::before {
-    left: 50% !important;       /* centro della linea */
-    transform: translateX(-50%) !important;
-    right: auto !important;      /* cancella eventuali valori desktop */
+    left: 20px !important;
+    transform: none !important;
+    right: auto !important;
   }
 
-  .event p {
-    max-width: 125px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    font-size: 0.95rem;
-    margin: 0;
+  .event h3, .event p {
+    font-size: 1rem;
+    text-align: left;
   }
 }
 
